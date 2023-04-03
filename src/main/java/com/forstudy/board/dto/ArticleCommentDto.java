@@ -11,7 +11,7 @@ public record ArticleCommentDto(
         UserAccountDto userAccountDto,
         String content,
         LocalDateTime createdAt,
-        String createdB,
+        String createdBy,
         LocalDateTime modifiedAt,
         String modifiedBy
 ) {
