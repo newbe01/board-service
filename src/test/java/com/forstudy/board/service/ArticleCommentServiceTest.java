@@ -35,7 +35,7 @@ class ArticleCommentServiceTest {
 
     @DisplayName("ArticleComments search test")
     @Test
-    void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() {
+    void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() { //TODO : ㅇㅔ러있음 찾아야댐
         // Given
         Long articleId = 1L;
         ArticleComment expected = createArticleComment("content");
