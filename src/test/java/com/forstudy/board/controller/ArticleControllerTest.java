@@ -1,6 +1,7 @@
 package com.forstudy.board.controller;
 
 import com.forstudy.board.config.SecurityConfig;
+import com.forstudy.board.domain.type.SearchType;
 import com.forstudy.board.dto.ArticleWithCommentsDto;
 import com.forstudy.board.dto.UserAccountDto;
 import com.forstudy.board.service.ArticleService;
@@ -61,9 +62,33 @@ class ArticleControllerTest {
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
 
+    @DisplayName("[view][GET] article searching page - searchingParameter")
+    @Test
+    void givenSearchKeyword_whenSearchingArticlesView_thenReturnsArticlesView() throws Exception {
+        // Given
+        SearchType searchType = SearchType.TITLE;
+        String searchValue = "title";
+        given(articleService.searchArticles(eq(searchType), eq(searchValue), any(Pageable.class))).willReturn(Page.empty());
+        given(paginationService.getPaginationBarNumbers(anyInt(), anyInt())).willReturn(List.of(0, 1, 2, 3, 4));
+
+        // when & then
+        mvc.perform(get("/articles")
+                        .queryParam("searchType", searchType.name())
+                        .queryParam("searchValue", searchValue)
+                )
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(view().name("articles/index"))
+                .andExpect(model().attributeExists("articles"))
+                .andExpect(model().attributeExists("searchTypes"));
+
+        then(articleService).should().searchArticles(eq(searchType), eq(searchValue), any(Pageable.class));
+        then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
+    }
+
     @DisplayName("[view][GET] article page - paging, sorting")
     @Test
-    void givenPagingAndSortingParams_whenSearchingArticlesPage_thenReturnsArticle() throws Exception {
+    void givenPagingAndSortingParams_whenSearchingArticlesView_thenReturnsArticle() throws Exception {
         //  Given
         String sortName = "title";
         String direction = "desc";
