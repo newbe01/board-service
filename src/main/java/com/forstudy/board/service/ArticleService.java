@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -65,5 +66,11 @@ public class ArticleService {
 
     public void deleteArticle(long articleId) {
         articleRepository.deleteById(articleId);
+    }
+
+    public Page<ArticleDto> searchArticlesViaHashtag(Object o, Pageable pageable) {
+    }
+
+    public List<String> getHashtags() {
     }
 }
