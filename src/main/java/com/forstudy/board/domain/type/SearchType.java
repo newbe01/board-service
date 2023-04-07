@@ -1,5 +1,16 @@
 package com.forstudy.board.domain.type;
 
+import lombok.Getter;
+
 public enum SearchType {
-    TITLE, CONTENT, ID, NICKNAME, HASHTAG
+    TITLE("Title"),
+    CONTENT("Content"),
+    ID("ID"),
+    NICKNAME("Nickname"),
+    HASHTAG("Hashtag");
+    @Getter private final String description;
+
+    SearchType(String description) {
+        this.description = description;
+    }
 }
