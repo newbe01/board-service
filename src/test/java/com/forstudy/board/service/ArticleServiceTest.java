@@ -106,7 +106,7 @@ class ArticleServiceTest {
 
         // Then
         assertThat(actualHashtags).isEqualTo(expectedHashtag);
-        then(articleRepository).should().findAllDistinctHashtags;
+        then(articleRepository).should().findAllDistinctHashtags();
     }
 
     @DisplayName("Article search test")
