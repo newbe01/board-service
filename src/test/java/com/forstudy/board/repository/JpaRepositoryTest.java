@@ -55,7 +55,7 @@ class JpaRepositoryTest {
     void givenTestData_whenInserting_thenWorksFine(){
         // Given
         long previousCount = articleRepository.count();
-        UserAccount userAccount = userAccountRepository.save(UserAccount.of("4study1", "1234", null, null, null));
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("4study1", "1234", null, null, null
         Article article = Article.of(userAccount, "new Article", "new content", "#spring");
 
         // When
@@ -83,7 +83,7 @@ class JpaRepositoryTest {
 
     }
 
-    @DisplayName("delte test")
+    @DisplayName("delete test")
     @Test
     void givenTestData_whenDeleting_thenWorksFine(){
         // Given

@@ -53,6 +53,7 @@
         </attr>
 
         <attr sel="#pagination">
+
     <!--        , searchType=${param.searchType}, searchValue=${param.searchValue}  -->
                 <attr sel="li[0]/a"
                       th:text="'previous'"
@@ -66,13 +67,14 @@
                           th:href="@{/articles(page=${pageNumber}, searchType=${param.searchType}, searchValue=${param.searchValue})}"
                           th:class="'page-link' + (${pageNumber} == ${articles.number} ? ' disabled' : '')">
 
-                    </attr>
+
                 </attr>
-               <attr sel="li[2]/a"
-                     th:text="'next'"
-                     th:href="@{/articles(page=${articles.number + 1}, searchType=${param.searchType}, searchValue=${param.searchValue})}"
-                     th:class="'page-link' + (${articles.number} >= ${articles.totalPages - 1} ? ' disabled' : '')">
-               </attr>
             </attr>
+            <attr sel="li[2]/a"
+                  th:text="'next'"
+                  th:href="@{/articles(page=${articles.number + 1}, searchType=${param.searchType}, searchValue=${param.searchValue})}"
+                  th:class="'page-link' + (${articles.number} >= ${articles.totalPages - 1} ? ' disabled' : '')">
+            </attr>
+        </attr>
     </attr>
 </thlogic>
