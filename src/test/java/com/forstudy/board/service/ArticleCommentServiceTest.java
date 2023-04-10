@@ -8,7 +8,6 @@ import com.forstudy.board.dto.UserAccountDto;
 import com.forstudy.board.repository.ArticleCommentRepository;
 import com.forstudy.board.repository.ArticleRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -146,7 +145,7 @@ class ArticleCommentServiceTest {
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                "4study",
+                "uno",
                 "password",
                 "4study@mail.com",
                 "4study",
@@ -168,7 +167,7 @@ class ArticleCommentServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "4study",
+                "uno",
                 "password",
                 "4study@email.com",
                 "4study",
