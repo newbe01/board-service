@@ -29,7 +29,7 @@ public class ArticleComment extends AuditingFields {
     private Long id;
 
     @Setter @ManyToOne(optional = false) private Article article;
-    @Setter @ManyToOne(optional = false) private UserAccount userAccount;
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount;
     @Setter @Column(nullable = false, length = 500) private String content;
 
 //    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;

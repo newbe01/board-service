@@ -34,7 +34,7 @@ class ArticleCommentServiceTest {
     @Mock private ArticleCommentRepository articleCommentRepository;
 
 
-    @Disabled("모르겠다 나중에 다시 보자 왜 얘만 안댐??")
+//    @Disabled("모르겠다 나중에 다시 보자 왜 얘만 안댐??")
     @DisplayName("ArticleComments search test")
     @Test
     void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() {
@@ -146,7 +146,6 @@ class ArticleCommentServiceTest {
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                2L,
                 "4study",
                 "password",
                 "4study@mail.com",
