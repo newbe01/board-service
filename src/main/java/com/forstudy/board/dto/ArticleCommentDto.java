@@ -2,6 +2,7 @@ package com.forstudy.board.dto;
 
 import com.forstudy.board.domain.Article;
 import com.forstudy.board.domain.ArticleComment;
+import com.forstudy.board.domain.UserAccount;
 
 import java.time.LocalDateTime;
 
@@ -36,10 +37,10 @@ public record ArticleCommentDto(
         );
     }
 
-    public ArticleComment toEntity(Article entity) {
+    public ArticleComment toEntity(Article article, UserAccount userAccount) {
         return ArticleComment.of(
-                entity,
-                userAccountDto.toEntity(),
+                article,
+                userAccount,
                 content
         );
     }
