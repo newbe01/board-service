@@ -6,14 +6,12 @@ import com.forstudy.board.domain.UserAccount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 //@ActiveProfiles("testdb") application.yaml data 사용
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // db 자동생성하지않고, 설정된 파일 사용
@@ -55,7 +53,7 @@ class JpaRepositoryTest {
     void givenTestData_whenInserting_thenWorksFine(){
         // Given
         long previousCount = articleRepository.count();
-        UserAccount userAccount = userAccountRepository.save(UserAccount.of("4study1", "1234", null, null, null
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("4study1", "1234", null, null, null));
         Article article = Article.of(userAccount, "new Article", "new content", "#spring");
 
         // When

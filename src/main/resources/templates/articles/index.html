@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<html lang="ko" xmlns:th="http://www.thymeleaf.org">-->
+<!--<form.html lang="ko" xmlns:th="http://www.thymeleaf.org">-->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="card card-margin search-form">
                 <div class="card-body p-0">
-                    <form action="/articles" method="get">
+                    <form id="search-form">
                         <div class="row">
                             <div class="col-12">
                                 <div class="row no-gutters">
@@ -77,50 +77,60 @@
         </form>
 -->
 
-        <table class="table" id="article-table">
-            <thead>
-                <tr>
-                    <th class="title col-6"><a>Title</a></th>
-                    <th class="hashtag col-2"><a>Hashtag</a></th>
-                    <th class="user-id col"><a>NickName</a></th>
-                    <th class="created-at col"><a>Date</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="title"><a>첫글</a></td>
-                    <td class="hashtag">#java</td>
-                    <td class="user-id">me</td>
-                    <td class="created-at"><time>2022-01-01</time></td>
-                </tr>
-                <tr>
-                    <td>2글</td>
-                    <td>#spring</td>
-                    <td>me</td>
-                    <td><time>2022-01-02</time></td>
-                </tr>
-                <tr>
-                    <td>3글</td>
-                    <td>#java</td>
-                    <td>me</td>
-                    <td><time>2022-01-03</time></td>
-                </tr>
-                <tr>
-                    <td>4글</td>
-                    <td>#java</td>
-                    <td>me</td>
-                    <td>2022-01-04</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <table class="table" id="article-table">
+                <thead>
+                    <tr>
+                        <th class="title col-6"><a>Title</a></th>
+                        <th class="hashtag col-2"><a>Hashtag</a></th>
+                        <th class="user-id"><a>NickName</a></th>
+                        <th class="created-at"><a>Date</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="title"><a>첫글</a></td>
+                        <td class="hashtag">#java</td>
+                        <td class="user-id">me</td>
+                        <td class="created-at"><time>2022-01-01</time></td>
+                    </tr>
+                    <tr>
+                        <td>2글</td>
+                        <td>#spring</td>
+                        <td>me</td>
+                        <td><time>2022-01-02</time></td>
+                    </tr>
+                    <tr>
+                        <td>3글</td>
+                        <td>#java</td>
+                        <td>me</td>
+                        <td><time>2022-01-03</time></td>
+                    </tr>
+                    <tr>
+                        <td>4글</td>
+                        <td>#java</td>
+                        <td>me</td>
+                        <td>2022-01-04</td>
+                    </tr>
+                </tbody>
+          </table>
+        </div>
 
-        <nav id="pagination" aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+            <div class="row">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a class="btn btn-primary me-md-2" role="button" id="write-article">글쓰기</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <nav id="pagination" aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
     </main>
     <!--<footer th:replace="footer :: footer" />-->
     <footer id="footer">

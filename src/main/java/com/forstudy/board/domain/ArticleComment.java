@@ -4,13 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -29,7 +23,7 @@ public class ArticleComment extends AuditingFields {
     private Long id;
 
     @Setter @ManyToOne(optional = false) private Article article;
-    @Setter @ManyToOne(optional = false) private UserAccount userAccount;
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount;
     @Setter @Column(nullable = false, length = 500) private String content;
 
 //    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
@@ -43,6 +37,7 @@ public class ArticleComment extends AuditingFields {
     //고정값 제외 생성자
     private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;
+        this.userAccount = userAccount;
         this.content = content;
     }
 

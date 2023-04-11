@@ -1,4 +1,4 @@
-package com.forstudy.board.domain.type;
+package com.forstudy.board.domain.constant;
 
 import lombok.Getter;
 

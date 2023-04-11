@@ -7,8 +7,8 @@ import com.forstudy.board.dto.ArticleCommentDto;
 import com.forstudy.board.dto.UserAccountDto;
 import com.forstudy.board.repository.ArticleCommentRepository;
 import com.forstudy.board.repository.ArticleRepository;
+import com.forstudy.board.repository.UserAccountRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,9 +32,10 @@ class ArticleCommentServiceTest {
 
     @Mock private ArticleRepository articleRepository;
     @Mock private ArticleCommentRepository articleCommentRepository;
+    @Mock private UserAccountRepository userAccountRepository;
 
 
-    @Disabled("모르겠다 나중에 다시 보자 왜 얘만 안댐??")
+//    @Disabled("모르겠다 나중에 다시 보자 왜 얘만 안댐??")
     @DisplayName("ArticleComments search test")
     @Test
     void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() {
@@ -57,6 +58,7 @@ class ArticleCommentServiceTest {
         // Given
         ArticleCommentDto dto = createArticleCommentDto("댓글");
         given(articleRepository.getReferenceById(dto.articleId())).willReturn(createArticle());
+        given(userAccountRepository.getReferenceById(dto.userAccountDto().userId())).willReturn(createUserAccount());
         given(articleCommentRepository.save(any(ArticleComment.class))).willReturn(null);
 
         // When
@@ -64,6 +66,7 @@ class ArticleCommentServiceTest {
 
         // Then
         then(articleRepository).should().getReferenceById(dto.articleId());
+        then(userAccountRepository).should().getReferenceById(dto.userAccountDto().userId());
         then(articleCommentRepository).should().save(any(ArticleComment.class));
     }
 
@@ -79,6 +82,7 @@ class ArticleCommentServiceTest {
 
         // Then
         then(articleRepository).should().getReferenceById(dto.articleId());
+        then(userAccountRepository).shouldHaveNoInteractions();
         then(articleCommentRepository).shouldHaveNoInteractions();
     }
 
@@ -146,8 +150,7 @@ class ArticleCommentServiceTest {
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                2L,
-                "4study",
+                "uno",
                 "password",
                 "4study@mail.com",
                 "4study",
@@ -169,7 +172,7 @@ class ArticleCommentServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "4study",
+                "uno",
                 "password",
                 "4study@email.com",
                 "4study",

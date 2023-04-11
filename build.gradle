@@ -35,6 +35,8 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-test:3.0.4'
+    testImplementation 'org.springframework.security:spring-security-test'
 
     // queryDSL 설정
     implementation "com.querydsl:querydsl-jpa:5.0.0:jakarta"
