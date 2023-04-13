@@ -209,6 +209,7 @@ class ArticleServiceTest {
         Article article = createArticle();
         ArticleDto dto = createArticleDto("새 타이틀", "새 내용", "#springboot");
         given(articleRepository.getReferenceById(dto.id())).willReturn(article); // == getOne : 헤당정보의 레퍼런스만 가지고옴
+        given(userAccountRepository.getReferenceById(dto.userAccountDto().userId())).willReturn(dto.userAccountDto().toEntity());
 
         // When
         sut.updateArticle(article.getId(), dto);
@@ -219,6 +220,7 @@ class ArticleServiceTest {
                 .hasFieldOrPropertyWithValue("content", dto.content())
                 .hasFieldOrPropertyWithValue("hashtag", dto.hashtag());
         then(articleRepository).should().getReferenceById(dto.id());
+        then(userAccountRepository).should().getReferenceById(dto.userAccountDto().userId());
     }
 
     @DisplayName("Article update test - no Article")
@@ -240,13 +242,14 @@ class ArticleServiceTest {
     void givenArticleId_whenDeletingArticle_thenDeletesArticle() {
         // Given
         Long articleId = 1L;
-        willDoNothing().given(articleRepository).deleteById(articleId);
+        String userId = "uno";
+        willDoNothing().given(articleRepository).deleteByIdAAndUserAccount_UserId(articleId, userId);
 
         // When
-        sut.deleteArticle(1L);
+        sut.deleteArticle(1L, userId);
 
         // Then
-        then(articleRepository).should().deleteById(articleId);
+        then(articleRepository).should().deleteByIdAAndUserAccount_UserId(articleId, userId);
     }
 
 

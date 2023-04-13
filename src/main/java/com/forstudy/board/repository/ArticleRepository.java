@@ -30,6 +30,8 @@ public interface ArticleRepository extends
 
     Page<Article> findByHashtag(String hashtag, Pageable pageable);
 
+    void deleteByIdAAndUserAccount_UserId(Long articleId, String userId);
+
     @Override   //queryDSL
     default void customize(QuerydslBindings bindings, QArticle root) {
 
