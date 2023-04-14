@@ -35,7 +35,6 @@ class ArticleCommentServiceTest {
     @Mock private UserAccountRepository userAccountRepository;
 
 
-//    @Disabled("모르겠다 나중에 다시 보자 왜 얘만 안댐??")
     @DisplayName("ArticleComments search test")
     @Test
     void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() {
@@ -125,13 +124,14 @@ class ArticleCommentServiceTest {
     void givenArticleCommentId_whenDeletingArticleComment_thenDeletesArticleComment() {
         // Given
         Long articleCommentId = 1L;
-        willDoNothing().given(articleCommentRepository).deleteById(articleCommentId);
+        String userId = "uno";
+        willDoNothing().given(articleCommentRepository).deleteByIdAndUserAccount_UserId(articleCommentId, userId);
 
         // When
-        sut.deleteArticleComment(articleCommentId);
+        sut.deleteArticleComment(articleCommentId, userId);
 
         // Then
-        then(articleCommentRepository).should().deleteById(articleCommentId);
+        then(articleCommentRepository).should().deleteByIdAndUserAccount_UserId(articleCommentId, userId);
     }
 
     private ArticleCommentDto createArticleCommentDto(String content) {
