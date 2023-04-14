@@ -29,7 +29,6 @@ public record ArticleWithCommentsResponse(
         if (nickname == null || nickname.isBlank()) {
             nickname = dto.userAccountDto().userId();
         }
-
         return new ArticleWithCommentsResponse(
                 dto.id(),
                 dto.title(),
