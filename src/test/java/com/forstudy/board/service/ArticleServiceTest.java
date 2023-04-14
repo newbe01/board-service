@@ -243,13 +243,13 @@ class ArticleServiceTest {
         // Given
         Long articleId = 1L;
         String userId = "uno";
-        willDoNothing().given(articleRepository).deleteByIdAAndUserAccount_UserId(articleId, userId);
+        willDoNothing().given(articleRepository).deleteByIdAndUserAccount_UserId(articleId, userId);
 
         // When
         sut.deleteArticle(1L, userId);
 
         // Then
-        then(articleRepository).should().deleteByIdAAndUserAccount_UserId(articleId, userId);
+        then(articleRepository).should().deleteByIdAndUserAccount_UserId(articleId, userId);
     }
 
 
