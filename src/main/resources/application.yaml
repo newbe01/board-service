@@ -7,7 +7,13 @@ logging:
     org.springframework.web.servlet: debug
     org.hibernate.orm.jdbc.bind: trace
 
+  spring:
+    profiles.active: local
+
+---
+
 spring:
+  config.activate.on-profile: local
   datasource:
     url : jdbc:mysql://localhost:3306/board
     username: 4study
@@ -45,12 +51,24 @@ spring:
 #
 
 ---
+
 spring:
-  config.activate.on-profile: cloudtype
+  config.activate.on-profile: prod
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://{DB_HOST}:{DB_PORT}/board?characterEncoding=UTF-8&serverTimezone=UTC
-    username: {DB_USERNAME}
-    password: {DB_PASSWORD}
-  jpa.hibernate.ddl-auto: create
-  sql.init.mode: always
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/board?characterEncoding=UTF-8&serverTimezone=UTC
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    show-sql: true
+    defer-datasource-initialization: off
+    hibernate.ddl-auto: none
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MariaDBDialect
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+  sql.init.mode: never
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated
