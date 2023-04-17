@@ -63,12 +63,12 @@ spring:
     open-in-view: false
     show-sql: true
     defer-datasource-initialization: off
-    hibernate.ddl-auto: none
+    hibernate.ddl-auto: create
     properties:
       hibernate.dialect: org.hibernate.dialect.MariaDBDialect
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
-  sql.init.mode: never
+  sql.init.mode: always
   data.rest:
     base-path: /api
     detection-strategy: annotated
