@@ -6,7 +6,7 @@
         <attr sel="#search-form" th:action="@{/articles}" th:method="get" />
         <attr sel="#search-type" th:remove="all-but-first">
             <attr sel="option[0]"
-                  th:each="searchType : ${searchTypes}"
+                  th:each="searchType : ${searchType}"
                   th:value="${searchType.name}"
                   th:text="${searchType.description}"
                   th:selected="${param.searchType != null && (param.searchType.toString == searchType.name)}"
