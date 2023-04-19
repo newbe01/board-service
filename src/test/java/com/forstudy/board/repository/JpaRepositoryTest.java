@@ -1,6 +1,5 @@
 package com.forstudy.board.repository;
 
-import com.forstudy.board.config.JpaConfig;
 import com.forstudy.board.domain.Article;
 import com.forstudy.board.domain.UserAccount;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +28,7 @@ class JpaRepositoryTest {
     private final ArticleCommentRepository articleCommentRepository;
     private final UserAccountRepository userAccountRepository;
 
-    public JpaRepositoryTest(
+    JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
             @Autowired ArticleCommentRepository articleCommentRepository,
             @Autowired UserAccountRepository userAccountRepository
@@ -107,7 +106,7 @@ class JpaRepositoryTest {
 
     @EnableJpaAuditing
     @TestConfiguration
-    public static class TestJpaConfig {
+    static class TestJpaConfig {
         // JpaRepositoryTest 는 Auditing 관련 설정의 문제
         @Bean
         public AuditorAware<String> auditorAware() {

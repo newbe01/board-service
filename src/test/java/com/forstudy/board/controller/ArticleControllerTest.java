@@ -1,12 +1,10 @@
 package com.forstudy.board.controller;
 
-import com.forstudy.board.config.SecurityConfig;
 import com.forstudy.board.config.TestSecurityConfig;
 import com.forstudy.board.domain.constant.FormStatus;
 import com.forstudy.board.domain.constant.SearchType;
 import com.forstudy.board.dto.ArticleDto;
 import com.forstudy.board.dto.ArticleWithCommentsDto;
-import com.forstudy.board.dto.BoardPrincipal;
 import com.forstudy.board.dto.UserAccountDto;
 import com.forstudy.board.dto.request.ArticleRequest;
 import com.forstudy.board.dto.response.ArticleResponse;
@@ -36,7 +34,6 @@ import java.util.Set;
 
 import static org.mockito.BDDMockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -51,7 +48,7 @@ class ArticleControllerTest {
     @MockBean private ArticleService articleService;
     @MockBean private PaginationService paginationService;
 
-    public ArticleControllerTest(
+    ArticleControllerTest(
             @Autowired MockMvc mvc,
             @Autowired FormDataEncoder formDataEncoder
     ) {

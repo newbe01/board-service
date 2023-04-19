@@ -1,6 +1,5 @@
 package com.forstudy.board.controller;
 
-import com.forstudy.board.config.SecurityConfig;
 import com.forstudy.board.config.TestSecurityConfig;
 import com.forstudy.board.dto.ArticleCommentDto;
 import com.forstudy.board.dto.request.ArticleCommentRequest;
@@ -25,7 +24,6 @@ import static org.mockito.BDDMockito.willDoNothing;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 @DisplayName("View Controller - articleComment")
 @Import({TestSecurityConfig.class, FormDataEncoder.class})
