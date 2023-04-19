@@ -28,8 +28,6 @@ public interface ArticleRepository extends
 
     Page<Article> findByUserAccount_NicknameContaining(String nickname, Pageable pageable);
 
-    Page<Article> findByHashtag(String hashtag, Pageable pageable);
-
     void deleteByIdAndUserAccount_UserId(Long articleId, String userid);
 
     @Override   //queryDSL
@@ -37,15 +35,16 @@ public interface ArticleRepository extends
 
         bindings.excludeUnlistedProperties(true);   //listing 하지않은 property 는 검색에서 제외
         // 원하는 파라미터 field 추가
-        bindings.including(root.title, root.content, root.hashtag, root.createdAt, root.createdBy);
+        bindings.including(root.title, root.content, root.hashtags, root.createdAt, root.createdBy);
 //        bindings.bind(root.title).first(( path, value) -> path.eq(value) );
 //        bindings.bind(root.title).first(StringExpression::likeIgnoreCase);  like ' ${ v } '
         // 원하는 파라미터 field 검색 조건
         bindings.bind(root.title).first(StringExpression::containsIgnoreCase);  // like '% ${ v } %' 제목 검색 방법
         bindings.bind(root.content).first(StringExpression::containsIgnoreCase);  // like '% ${ v } %' 제목 검색 방법
-        bindings.bind(root.hashtag).first(StringExpression::containsIgnoreCase);  // like '% ${ v } %' 제목 검색 방법
+        bindings.bind(root.hashtags.any().hashtagName).first(StringExpression::containsIgnoreCase);  // like '% ${ v } %' 제목 검색 방법
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
         bindings.bind(root.createdAt).first(DateTimeExpression::eq);
 
     }
+
 }
