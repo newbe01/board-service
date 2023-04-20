@@ -15,10 +15,13 @@ spring:
 spring:
   config.activate.on-profile: local
   datasource:
-    url : jdbc:mysql://localhost:3306/board
-    username: 4study
+#    url : jdbc:mysql://localhost:3306/board
+#    username: 4study
+#    password: 1234
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    url : jdbc:postgresql://localhost:5432/board
+    username: chris
     password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
