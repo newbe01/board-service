@@ -127,22 +127,6 @@ class ArticleServiceTest {
         then(articleRepository).should().findByHashtagNames(List.of(hashtagName), pageable);
     }
 
-    @DisplayName("Hashtag list search test -> unique hashtag")
-    @Test
-    void givenNothing_whenCalling_thenReturnsHashtags() {
-        // Given
-        Article article = createArticle();
-        List<String> expectedHashtags = List.of("java", "spring", "boot");
-        given(hashtagRepository.findAllHashtagNames()).willReturn(expectedHashtags);
-
-        // When
-        List<String> actualHashtags = sut.getHashtags();
-
-        // Then
-        assertThat(actualHashtags).isEqualTo(expectedHashtags);
-        then(hashtagRepository).should().findAllHashtagNames();
-    }
-
     @DisplayName("게시글 ID로 조회하면, 댓글 달긴 게시글을 반환한다.")
     @Test
     void givenArticleId_whenSearchingArticleWithComments_thenReturnsArticleWithComments() {
@@ -338,6 +322,21 @@ class ArticleServiceTest {
         then(hashtagService).should(times(2)).deleteHashtagWithoutArticles(any());
     }
 
+    @DisplayName("Hashtag list search test -> unique hashtag")
+    @Test
+    void givenNothing_whenCalling_thenReturnsHashtags() {
+        // Given
+        Article article = createArticle();
+        List<String> expectedHashtags = List.of("java", "spring", "boot");
+        given(hashtagRepository.findAllHashtagNames()).willReturn(expectedHashtags);
+
+        // When
+        List<String> actualHashtags = sut.getHashtags();
+
+        // Then
+        assertThat(actualHashtags).isEqualTo(expectedHashtags);
+        then(hashtagRepository).should().findAllHashtagNames();
+    }
 
     private UserAccount createUserAccount() {
         return createUserAccount("uno");
