@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @ToString(callSuper = true)
@@ -31,6 +33,15 @@ public class ArticleComment extends AuditingFields {
     @JoinColumn(name = "userId")
     private UserAccount userAccount;
 
+    @Setter
+    @Column(updatable = false)
+    private Long parentCommentId;   // 부모댓글 아이디
+
+    @ToString.Exclude
+    @OrderBy("createdAt asc")
+    @OneToMany(mappedBy = "parentCommentId", cascade = CascadeType.ALL)
+    private Set<ArticleComment> childComments = new LinkedHashSet<>();
+
     @Setter @Column(nullable = false, length = 500) private String content;
 
 //    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
@@ -42,15 +53,21 @@ public class ArticleComment extends AuditingFields {
     protected ArticleComment() {}
 
     //고정값 제외 생성자
-    private ArticleComment(Article article, UserAccount userAccount, String content) {
+    private ArticleComment(Article article, UserAccount userAccount, Long parentCommentId, String content) {
         this.article = article;
         this.userAccount = userAccount;
+        this.parentCommentId = parentCommentId;
         this.content = content;
     }
 
     //guide
     public static ArticleComment of(Article article, UserAccount userAccount, String content) {
-        return new ArticleComment(article,userAccount,content);
+        return new ArticleComment(article,userAccount, null, content);
+    }
+
+    public void addChildComment(ArticleComment child) {
+        child.setParentCommentId(this.getId());
+        this.getChildComments().add(child);
     }
 
     @Override
