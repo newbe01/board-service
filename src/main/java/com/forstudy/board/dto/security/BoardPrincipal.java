@@ -1,13 +1,12 @@
-package com.forstudy.board.dto;
+package com.forstudy.board.dto.security;
 
+import com.forstudy.board.dto.UserAccountDto;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,15 +17,16 @@ public record BoardPrincipal(
         Collection<? extends GrantedAuthority> authorities,
         String email,
         String nickname,
+<<<<<<< Updated upstream:src/main/java/com/forstudy/board/dto/BoardPrincipal.java
+        String memo
+) implements UserDetails {
+=======
         String memo,
         Map<String, Object> oAuth2Attributes
-) implements UserDetails , OAuth2User {
+) implements UserDetails, OAuth2User {
+>>>>>>> Stashed changes:src/main/java/com/forstudy/board/dto/security/BoardPrincipal.java
 
     public static BoardPrincipal of(String username, String password, String email, String nickname, String memo) {
-        return of(username, password, email, nickname, memo, Map.of());
-    }
-
-    public static BoardPrincipal of(String username, String password, String email, String nickname, String memo, Map<String, Object> oAuth2Attributes) {
         Set<RoleType> roleTypes = Set.of(RoleType.USER);
 
         return new BoardPrincipal(
@@ -39,8 +39,7 @@ public record BoardPrincipal(
                 ,
                 email,
                 nickname,
-                memo,
-                oAuth2Attributes
+                memo
         );
     }
 
@@ -64,7 +63,7 @@ public record BoardPrincipal(
         );
     }
 
-//  Spring security
+
     @Override public String getUsername() { return username; }
     @Override public String getPassword() { return password; }
     @Override public Collection<? extends GrantedAuthority> getAuthorities() { return authorities; }
@@ -74,9 +73,6 @@ public record BoardPrincipal(
     @Override public boolean isCredentialsNonExpired() { return true; }
     @Override public boolean isEnabled() { return true; }
 
-//  Spring Oauth
-    @Override public Map<String, Object> getAttributes() { return oAuth2Attributes; }
-    @Override public String getName() { return username; }
 
     public enum RoleType {
         USER("ROLE_USER");
