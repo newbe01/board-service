@@ -1,7 +1,7 @@
 package com.forstudy.board.config;
 
-import com.forstudy.board.domain.UserAccount;
-import com.forstudy.board.repository.UserAccountRepository;
+import com.forstudy.board.dto.UserAccountDto;
+import com.forstudy.board.service.UserAccountService;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.event.annotation.BeforeTestMethod;
@@ -14,19 +14,24 @@ import static org.mockito.BDDMockito.given;
 @Import(SecurityConfig.class)
 public class TestSecurityConfig {
 
-    @MockBean private UserAccountRepository userAccountRepository;
+    @MockBean private UserAccountService userAccountService;
 
     @BeforeTestMethod
     public void securitySetUp() {
-        given(userAccountRepository.findById(anyString())).willReturn(Optional.of(UserAccount.of(
-           "unoTest",
-           "pw",
-           "uno@gamil.com",
-           "uno",
-           "test memo"
-        )));
+        given(userAccountService.searchUser(anyString()))
+                .willReturn(Optional.of(createUserAccountDto()));
+        given(userAccountService.saveUser(anyString(), anyString(), anyString(), anyString(), anyString()))
+                .willReturn(createUserAccountDto());
     }
 
-
+    private UserAccountDto createUserAccountDto() {
+        return UserAccountDto.of(
+                "unoTest",
+                "pw",
+                "uno@gamil.com",
+                "uno",
+                "test memo"
+        );
+    }
 
 }

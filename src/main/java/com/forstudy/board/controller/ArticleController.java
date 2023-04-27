@@ -2,7 +2,7 @@ package com.forstudy.board.controller;
 
 import com.forstudy.board.domain.constant.FormStatus;
 import com.forstudy.board.domain.constant.SearchType;
-import com.forstudy.board.dto.BoardPrincipal;
+import com.forstudy.board.dto.security.BoardPrincipal;
 import com.forstudy.board.dto.request.ArticleRequest;
 import com.forstudy.board.dto.response.ArticleResponse;
 import com.forstudy.board.dto.response.ArticleWithCommentsResponse;

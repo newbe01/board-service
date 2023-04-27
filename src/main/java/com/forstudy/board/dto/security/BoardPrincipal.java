@@ -1,5 +1,6 @@
-package com.forstudy.board.dto;
+package com.forstudy.board.dto.security;
 
+import com.forstudy.board.dto.UserAccountDto;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,8 +17,14 @@ public record BoardPrincipal(
         Collection<? extends GrantedAuthority> authorities,
         String email,
         String nickname,
+<<<<<<< Updated upstream:src/main/java/com/forstudy/board/dto/BoardPrincipal.java
         String memo
 ) implements UserDetails {
+=======
+        String memo,
+        Map<String, Object> oAuth2Attributes
+) implements UserDetails, OAuth2User {
+>>>>>>> Stashed changes:src/main/java/com/forstudy/board/dto/security/BoardPrincipal.java
 
     public static BoardPrincipal of(String username, String password, String email, String nickname, String memo) {
         Set<RoleType> roleTypes = Set.of(RoleType.USER);
