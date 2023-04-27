@@ -23,18 +23,18 @@ public abstract class AuditingFields {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    protected LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
     @CreatedBy
     @Column(nullable = false, length = 100)
-    protected String createdBy;
+    private String createdBy;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @LastModifiedDate
     @Column(nullable = false)
-    protected LocalDateTime modifiedAt;
+    private LocalDateTime modifiedAt;
 
     @LastModifiedBy
     @Column(nullable = false, length = 100)
-    protected String modifiedBy;
+    private String modifiedBy;
 }
