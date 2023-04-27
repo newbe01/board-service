@@ -26,7 +26,6 @@ dependencies {
     //REST API 설계시 Response 메시지에 부가 정보들을 담아서 함께 제공하는 방식
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     runtimeOnly 'com.h2database:h2:2.1.214'
