@@ -1,6 +1,6 @@
 package com.forstudy.board.config;
 
-import com.forstudy.board.dto.BoardPrincipal;
+import com.forstudy.board.dto.security.BoardPrincipal;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

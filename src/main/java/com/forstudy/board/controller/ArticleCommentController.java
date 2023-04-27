@@ -1,7 +1,6 @@
 package com.forstudy.board.controller;
 
-import com.forstudy.board.dto.BoardPrincipal;
-import com.forstudy.board.dto.UserAccountDto;
+import com.forstudy.board.dto.security.BoardPrincipal;
 import com.forstudy.board.dto.request.ArticleCommentRequest;
 import com.forstudy.board.service.ArticleCommentService;
 import lombok.RequiredArgsConstructor;
