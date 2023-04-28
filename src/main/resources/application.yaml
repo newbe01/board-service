@@ -25,6 +25,7 @@ spring:
 #    username: 4study
 #    password: 1234
 #    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.postgresql.Driver
 #    url : jdbc:postgresql://localhost:5432/board
 #    username: chris
 #    password: 1234
@@ -125,16 +126,6 @@ spring:
   jpa:
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
-    open-in-view: false
-    show-sql: true
-    properties:
-      hibernate.format_sql: true
-      hibernate.default_batch_fetch_size: 100
-  h2.console.enabled: false
-  sql.init.mode: always
-  data.rest:
-    base-path: /api
-    detection-strategy: annotated
   security:
     oauth2:
       client:
