@@ -24,9 +24,12 @@ repositories {
 
 
 dependencies {
-    implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.1.0'
+    implementation 'com.github.therapi:therapi-runtime-javadoc:0.15.0'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:3.0.4'
     implementation 'org.springframework.boot:spring-boot-starter-web:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     //REST API 설계시 Response 메시지에 부가 정보들을 담아서 함께 제공하는 방식
@@ -41,6 +44,7 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     runtimeOnly 'org.postgresql:postgresql'
     compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'com.github.therapi:therapi-runtime-javadoc-scribe:0.15.0'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
