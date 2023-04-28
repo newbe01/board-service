@@ -19,9 +19,12 @@ spring:
 #    username: 4study
 #    password: 1234
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-    url : jdbc:postgresql://localhost:5432/board
-    username: chris
-    password: 1234
+#    url : jdbc:postgresql://localhost:5432/board
+#    username: chris
+#    password: 1234
+    url : ${LOCAL_DB_URL}
+    username : ${LOCAL_DB_USERNAME}
+    password : ${LOCAL_DB_PASSWORD}
   jpa:
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
@@ -36,8 +39,6 @@ spring:
     base-path: /api
     detection-strategy: annotated
   thymeleaf3.decoupled-logic: true
-<<<<<<< Updated upstream
-=======
   security:
     oauth2:
       client:
@@ -54,7 +55,6 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
->>>>>>> Stashed changes
 
 #  thymeleaf.cache: false
 #  data.rest:
@@ -95,8 +95,6 @@ spring:
     base-path: /api
     detection-strategy: annotated
   thymeleaf3.decoupled-logic: true
-<<<<<<< Updated upstream
-=======
   security:
     oauth2:
       client:
@@ -113,4 +111,3 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
->>>>>>> Stashed changes
