@@ -14,6 +14,12 @@ spring:
 
 spring:
   config.activate.on-profile: local
+#  application.name: 4study-board
+#  cloud.vault:
+#    scheme: http
+#    authentication: TOKEN
+#    token: hvs.QFwuyKIGJSDs6xTR6B5NOs1K
+#  config.import: vault://
   datasource:
 #    url : jdbc:mysql://localhost:3306/board
 #    username: 4study
