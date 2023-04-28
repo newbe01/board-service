@@ -18,7 +18,7 @@ spring:
 #  cloud.vault:
 #    scheme: http
 #    authentication: TOKEN
-#    token: hvs.QFwuyKIGJSDs6xTR6B5NOs1K
+#    token: {VALUT_TOKEN}
 #  config.import: vault://
   datasource:
 #    url : jdbc:mysql://localhost:3306/board
