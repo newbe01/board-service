@@ -34,6 +34,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/api/**").permitAll()
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/",
@@ -49,6 +50,7 @@ public class SecurityConfig {
                                 .userService(oAuth2UserService)
                         )
                 )
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .build();
     }
 
