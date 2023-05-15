@@ -2,6 +2,7 @@ package com.forstudy.board.repository;
 
 import com.forstudy.board.domain.ArticleComment;
 import com.forstudy.board.domain.QArticleComment;
+import com.forstudy.board.domain.projection.ArticleCommentProjection;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource
+@RepositoryRestResource(excerptProjection = ArticleCommentProjection.class)
 public interface ArticleCommentRepository extends
         JpaRepository<ArticleComment, Long>,
         QuerydslPredicateExecutor<ArticleComment>, // 모든필드의 기본 검색기능 추가
