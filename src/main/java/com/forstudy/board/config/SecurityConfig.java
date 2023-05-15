@@ -34,7 +34,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/api/**").permitAll() // api 허용
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/",
@@ -50,7 +50,7 @@ public class SecurityConfig {
                                 .userService(oAuth2UserService)
                         )
                 )
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))  // api 통신 시 csrf 설정 통과
                 .build();
     }
 
